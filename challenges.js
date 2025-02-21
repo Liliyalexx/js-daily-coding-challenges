@@ -62,8 +62,11 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
-
-
+function addTwoNumbers(num1, num2){
+  if(isNaN(num1)|| isNaN(num2)) return NaN;
+  return num1+num2;
+}
+console.log(addTwoNumbers);
 
 
 /*-----------------------------------------------------------------------------
@@ -85,7 +88,16 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
-
+function sumNumbers(numbers){
+  if(!Array.isArray(numbers) || numbers === 0) {
+    return 0;
+  }
+  let sum = 0;
+  for(let i = 0; i < numbers.length; i++){
+    sum+=numbers[i];
+  }
+  return sum;
+}
 
 
 
@@ -109,7 +121,10 @@ addList(1,50,1.23) //=> 52.23
 addList(7,-12) //=> -5
 -----------------------------------------------------------------------------*/
 // Your solution for 04-addList here:
-
+function addList(...nums){
+if(nums.length === 0) return 0;
+return nums.reduce((sum, nums) => sum+nums, 0);
+}
 
 
 
@@ -139,7 +154,12 @@ computeRemainder(10.5, 3) //=> 1.5
 
 
 
-
+function computeRemainder(dividend, divisor){
+if (divisor === 0) return Infinity;
+let quotient = Math.floor(dividend/divisor);
+let remainder = dividend-(quotient*divisor)
+return remainder
+}
 
 /*-----------------------------------------------------------------------------
 Challenge: 06-range
@@ -164,7 +184,11 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-
+function range(start, end){
+  if(start > end){ 
+    return "First argument must be less than second"
+  }
+}
 
 
 
