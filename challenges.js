@@ -123,7 +123,7 @@ addList(7,-12) //=> -5
 // Your solution for 04-addList here:
 function addList(...nums){
 if(nums.length === 0) return 0;
-return nums.reduce((sum, nums) => sum+nums, 0);
+return nums.reduce((sum, nums) => sum + nums, 0);
 }
 
 
@@ -156,8 +156,8 @@ computeRemainder(10.5, 3) //=> 1.5
 
 function computeRemainder(dividend, divisor){
 if (divisor === 0) return Infinity;
-let quotient = Math.floor(dividend/divisor);
-let remainder = dividend-(quotient*divisor)
+let quotient = Math.floor(dividend / divisor);
+let remainder = dividend - (quotient * divisor)
 return remainder
 }
 
@@ -184,14 +184,25 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-function range(start, end){
-  if(start > end){ 
-    return "First argument must be less than second"
+function range(start, end) {
+  if (start > end) {
+      return "First argument must be less than second";
   }
+
+  let result = [];
+  for (let i = start; i < end; i++) {
+      result.push(i);
+  }
+  
+  return result;
 }
 
 
-
+function range(start, end){
+  if(start > end){ 
+    return Array.from({length: end - start}, (_, i ) => start + i);
+  }
+}
 /*-----------------------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -209,7 +220,9 @@ Examples:
 reverseUpcaseString("SEI Rocks!") //=> "!SKCOR IES" 
 -----------------------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-
+function reverseUpcaseString(){
+  
+}
 
 
 
