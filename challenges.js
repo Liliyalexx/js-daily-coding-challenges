@@ -198,11 +198,11 @@ function range(start, end) {
 }
 
 
-function range(start, end){
-  if(start > end){ 
-    return Array.from({length: end - start}, (_, i ) => start + i);
-  }
-}
+// function range(start, end){
+//   if(start > end){ 
+//     return Array.from({length: end - start}, (_, i ) => start + i);
+//   }
+// }
 /*-----------------------------------------------------------------------------
 Challenge: 07-reverseUpcaseString
 
@@ -220,9 +220,20 @@ Examples:
 reverseUpcaseString("SEI Rocks!") //=> "!SKCOR IES" 
 -----------------------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
-function reverseUpcaseString(){
-  
+function reverseUpcaseString(string){
+//   // Step 1: Reverse the string
+// const reversedStr = string.split("").reverse().join('');
+
+// //lets convert it to uppercase
+
+// const upperCase = reversedStr.toUppeCases();
+
+// return upperCase;
+return string.split('').reverse().join('').toUpperCase();
 }
+
+console.log(reverseUpcaseString("hello")); // Output: "OLLEH"
+console.log(reverseUpcaseString("JavaScript")); // Output: "TPIRCSAVAJ"
 
 
 
@@ -245,7 +256,12 @@ removeEnds('a') //=> "" (empty string)
 -----------------------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
-
+function removeEnds(string){
+if (string.length < 3) {
+  return "";
+}
+return string.slice(1, -1);
+}
 
 
 
@@ -288,7 +304,13 @@ charCount('Today is fantastic!')
 // Your solution for 09-charCount here:
 
 
-
+function charCount(string){
+  let count = {};
+  for (let char of string){
+    count[char] = (count[char] || 0) + 1;
+  }
+  return count;
+}
 
 
 /*-----------------------------------------------------------------------------
@@ -317,7 +339,18 @@ formatWithPadding(1234, '*', 3) //=> "1234"
 -----------------------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
+function formatWithPadding (int, pad, length){
+const numStr = int.toString();
+if(numStr .length >= length){
+  return numStr;
+}
 
+const padLength = length - numStr.length;
+
+const padding = pad.repeat(padLength);
+
+return padding + numStr;
+}
 
 
 
@@ -344,7 +377,11 @@ isPalindrome('A nut for a jar of tuna') //=> true
 isPalindrome('') //=> true
 -----------------------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
-
+function isPalindrome (string){
+  const cleanedStr = string.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const reversedStr = cleanedStr.split('').reverse().join('');
+  return cleanedStr === reversedStr;
+}
 
 
 
@@ -375,7 +412,18 @@ hammingDistance('abc', 'ab') //=> NaN
 -----------------------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
-
+function hammingDistance(str1, str2){
+  if(str1.length !== str2.length){
+return NaN;
+  }
+let distance = 0;
+for(let i =0; i < str1.length; i++){
+  if(str1[i]!==str2[i]){
+    distance++;
+  }
+}
+return distance;
+}
 
 
 
@@ -402,9 +450,18 @@ mumble('!A 2') //=> '!-AA-   -2222'
 -----------------------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 
+function mumble(string){
+  return string
+  .split('')
+  .map((char, index)=>{
+    return char.repeat(index+1);
+  })
+  .join('-');
 
-
-
+}
+console.log(mumble("abcd")); // "a-bb-ccc-dddd"
+console.log(mumble("RqaEzty")); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+console.log(mumble("cwAt")); // "c-ww-Aaa-tttt"
 
 /*-----------------------------------------------------------------------------
 Challenge: 14-fromPairs
@@ -430,7 +487,13 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ])
 -----------------------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
-
+function fromPairs(pairs){
+  const result = {};
+  for(const [key, value] of pairs){
+    result[key] = value;
+  }
+  return result;
+}
 
 
 
